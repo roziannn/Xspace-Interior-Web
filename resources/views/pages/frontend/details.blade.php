@@ -30,73 +30,27 @@
           <div class="flex-1">
             <div class="slider">
               <div class="thumbnail">
+                @foreach ($product->galleries as $item)
                 <div class="px-2">
                   <div
-                    class="item selected"
-                    data-img="/frontend/images/content/showcase-1.front.jpg"
+                    class="item {{ $loop->first ? 'selected' : '' }}"
+                    data-img="{{ Storage::url($item->url) }}"
                   >
                     <img
-                      src="/frontend/images/content/showcase-1.front.jpg"
-                      alt="front"
+                      src="{{ Storage::url($item->url) }}" alt="front"
                       class="object-cover w-full h-full rounded-lg"
                     />
                   </div>
                 </div>
-                <div class="px-2">
-                  <div
-                    class="item"
-                    data-img="/frontend/images/content/showcase-1.back.jpg"
-                  >
-                    <img
-                      src="/frontend/images/content/showcase-1.back.jpg"
-                      alt="back"
-                      class="object-cover w-full h-full rounded-lg"
-                    />
-                  </div>
-                </div>
-                <div class="px-2">
-                  <div
-                    class="item"
-                    data-img="/frontend/images/content/showcase-1.rear.jpg"
-                  >
-                    <img
-                      src="/frontend/images/content/showcase-1.rear.jpg"
-                      alt="rear"
-                      class="object-cover w-full h-full rounded-lg"
-                    />
-                  </div>
-                </div>
-                <div class="px-2">
-                  <div
-                    class="item"
-                    data-img="/frontend/images/content/showcase-1.side.jpg"
-                  >
-                    <img
-                      src="/frontend/images/content/showcase-1.side.jpg"
-                      alt="side"
-                      class="object-cover w-full h-full rounded-lg"
-                    />
-                  </div>
-                </div>
-                <div class="px-2">
-                  <div
-                    class="item"
-                    data-img="/frontend/images/content/showcase-1.top.jpg"
-                  >
-                    <img
-                      src="/frontend/images/content/showcase-1.top.jpg"
-                      alt="top"
-                      class="object-cover w-full h-full rounded-lg"
-                    />
-                  </div>
-                </div>
+                @endforeach
+              
               </div>
               <div class="preview">
                 <div class="item rounded-lg h-full overflow-hidden">
                   <img
-                    src="/frontend/images/content/showcase-1.front.jpg"
+                    src="{{ $product->galleries()->exists() ? Storage::url($product->galleries->first()->url) : 'data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==' }}"
                     alt="front"
-                    class="object-cover w-full h-full rounded-lg"
+                    class="w-full h-full object-cover object-center"
                   />
                 </div>
               </div>
