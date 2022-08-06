@@ -11,6 +11,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CheckoutRequest;
+use App\Models\TransactionItem;
 
 class FrontendController extends Controller
 {
@@ -46,6 +47,7 @@ class FrontendController extends Controller
 
         return redirect('cart');
     }
+
     public function cart(Request $request){
         $carts = Cart::with(['product.galleries'])->where('users_id', Auth::user()->id)->get();
         return view('pages.frontend.cart', compact('carts'));
@@ -66,7 +68,7 @@ class FrontendController extends Controller
 
         // Create Transaction item (data detail barang yg akan dibeli)
         foreach ($carts as $cart){
-            $items[] = Transaction::create([
+            $items[] = TransactionItem::create([
                 'transactions_id' => $transaction->id,
                 'users_id' => $cart->users_id,
                 'products_id' => $cart->products_id
