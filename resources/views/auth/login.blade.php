@@ -32,6 +32,7 @@
                 </label>
             </div>
 
+
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
@@ -42,6 +43,13 @@
                 <x-jet-button class="ml-4">
                     {{ __('Log in') }}
                 </x-jet-button>
+            </div>
+
+            <div class="flex justify-center mt-5">
+                <p class="text-sm">Belum punya akun? </p>
+                <a class="ml-2 underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                    {{ __('Buat akun') }}
+                </a>
             </div>
         </form>
     </x-jet-authentication-card>

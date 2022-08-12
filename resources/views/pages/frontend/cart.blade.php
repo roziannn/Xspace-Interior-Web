@@ -107,7 +107,6 @@
                   <a href="{{ route('index') }}" class="underline">Shop Now</a>
                 </p>
               @endforelse
-
             </div>
             <div class="w-full md:px-4 md:w-4/12" id="shipping-detail">
               <div class="bg-gray-100 px-4 py-6 md:p-8 md:rounded-3xl">
